@@ -1,0 +1,288 @@
+*{
+    box-sizing: border-box;
+}
+/* Canela Condensed Light Font */
+@font-face{
+    font-family: "Canela Condensed";
+    src: url("../fonts/CanelaCondensedLight.otf")
+}
+
+/* FONTS AND SIZING*/
+body{
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #403831;
+}
+.canela{
+    font-family: "Canela Condensed", sans-serif;
+}
+
+
+/* SCENT OPTIONS */
+.scent-options{
+    background-color: white;
+    height: auto;
+    width: 100vw;
+    font-size:128px;
+    text-overflow: clip;
+}
+
+.scentoption-three, .scentoption-five{
+    text-align: right;
+}
+
+.space-around{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.scent-options p{
+    margin:30px 0px 30px 0px;
+}
+
+/* PURCHASING PAGE */
+.purchasingpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-image: url(image/moss.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.glassmorphism{
+    backdrop-filter: blur(8px);
+    border: rgba(255, 255, 255, 0.5) 2px solid;
+}
+
+.purchasingbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 90%;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.purchasingpage p{
+    color: white;
+}
+
+.productname{
+    font-size: 55px;
+    margin:0;
+}
+.purchasingbox-left{
+    width:50%;
+    padding:5%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Chart Base */
+
+.chartline-x, .chartline-y{
+    background-color: white;
+    height: 60vh;
+    width:.25vw;
+    border-radius: 50px;
+}
+
+.x-axis,.y-axis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.x-axis{
+    position: relative;
+    left: 50px;
+
+}
+
+.y-axis{
+    display: flex;
+    transform: rotate(90deg);
+}
+
+.y-axis p{
+    transform: rotate(-90deg);
+}
+
+.woody{
+    position:relative;
+    bottom: 25px;
+}
+
+.floral{
+    position:relative;
+    top: 20px;
+}
+
+
+.chartline{
+    display: flex;
+    align-items: center;
+}
+
+.purchasingbox-right{
+    width:50%;
+    padding-left: 5%;
+    padding-right:5%;
+}
+
+.rightrow1{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+
+}
+
+.rightrow2{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: -5px;
+}
+
+
+.edp{
+    margin: 0;
+}
+
+.reviewstars{
+    color: #DA4637;
+}
+
+a{
+    color:white;
+}
+
+.sizelabel{
+    margin: 10px 0px 0px 0px;
+}
+
+.sizebuttons{
+    display: flex;
+    gap:20px;
+    margin: 16px 0px 20px 0px;
+}
+
+.purchasebuttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px, 0px, 30px, 0px;
+}
+
+.scentnotes{
+    display: flex;
+}
+
+.noteone, .notetwo, .notethree, .notefour, .notefive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notename{
+    font-weight: 700;
+}
+
+.longevity, .sillage{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 20px
+}
+
+.longevityscale, .sillagescale{
+    color:white;
+}
+.orange-white{
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    padding: 15px 50px 15px 50px;
+    border-radius: 10px;
+    border:none;
+    background-color: white;
+    border: 2px white solid;
+    color: #403831;
+}
+
+.orange-white:hover{
+    background-color: #DA4637;
+    border: 2px solid #952216;
+    color: white;
+}
+
+.bergamotbackground{
+    background-color: #403831;
+    height: 150vh;
+    position:absolute;
+    z-index: -999;
+}
+.monthly-note{
+    height:100vh;
+    background-image: url(image/bergamot.jpg);
+    color:#FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.bergamotinfo{
+    height: auto;
+    width: 35%;
+    border-radius: 20px;
+    margin-top:80px;
+    margin-right: 50px;
+    padding:50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.bergamotheader{
+    font-size: 70px;
+    margin:0;
+}
+.bergamotsubheader{
+    font-size: 20px;
+    margin:0;
+}
+
+.bergamotinfo p{
+    text-align: center;
+}
+
+.bergamotbody{
+    width: 90%;
+}
+
+.bergamotinfo-bottom{
+    display: flex;
+    flex-direction: row;
+}
+.fragranceimg{
+    display: flex;
+    flex-direction: column;
+}
+
+.fragrancename{
+    font-weight: 700;
+}
+
+
