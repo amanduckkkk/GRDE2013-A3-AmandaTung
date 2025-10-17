@@ -11,9 +11,17 @@
     <script src="https://kit.fontawesome.com/f005ee47a5.js" crossorigin="anonymous"></script>
     <!-- Font Awesome Icons:
      - Solid Circle
+     - Solid Star
      -->
+    <!-- Swiper JS CDN-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <!-- Fullpage JS CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Shoelace UI CDN-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+
+    
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.37/dist/fullpage.min.css" rel="stylesheet">
     <title>frm.ytd - (Un)offical Website</title>
 </head>
 <body>
@@ -66,6 +74,13 @@
                         <p class="floral">Floral</p>
                     </div>
                 </div>
+                <div class="chartimg">
+                    <img class="newpage-chart" src="../image/newpage-chart.svg" alt="New Page Chart Image">
+                    <img class="oneday-chart" src="../image/oneday-chart.svg" alt="One More Day Chart Image">
+                    <img class="softpetals-chart" src="../image/softpetals-chart.svg" alt="Soft Petals Chart Image">
+                    <img class="timeslows-chart" src="../image/timeslows-chart.svg" alt="Time Slows Chart Image">
+                    <img class="betweenbranches-chart" src="../image/betweenbranches-chart.svg" alt="Between Branches Chart Image">
+                </div>
             </div>
             <div class="purchasingbox-right">
             <div class="rightrow1">
@@ -74,19 +89,13 @@
             </div>
             <div class="rightrow2">
                 <p class="productprice 24px-text">$ [ ]</p>
-                <div class="reviewstars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
+                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly value="4"></sl-rating>
                 <a href="#review-page" class="reviewnumber">(0.0)</a>
             </div>
             <p class="sizelabel"> Size</p>
             <div class="sizebuttons">
-                <button class="20ml orange-white">20ml</button>
-                <button class="50ml orange-white">50ml</button>
+                <button class="20ml white-orange">20ml</button>
+                <button class="50ml white-orange">50ml</button>
             </div>
 
             <div class="scentnotes">
@@ -120,43 +129,27 @@
             </div>
             <div class="longevity">
                 <p class="longevity-text">Longevity</p>
-                <div class="longevityscale">
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                </div>
+                    <sl-rating class="longevityscale"
+                    max="10" 
+                    full-icon="circle-fill"
+                    readonly value="3" 
+                    style="--symbol-color-active: #FFFFFF; --symbol-spacing:15px;"></sl-rating>
             </div>
 
             <div class="sillage">
                 <p class="sillage-text">Sillage</p>
-                <div class="sillagescale">
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                </div>
+                <sl-rating class="sillagescale" 
+                max="10"
+                readonly value="6" 
+                style="--symbol-color-active: #FFFFFF;
+                --symbol-spacing:15px;
+                --symbol-size: 1.25rem;
+                "></sl-rating>
             </div>
             
             <div class="purchasebuttons">
-                <button class="addtocart orange-white">Add to Cart</button>
-                <button class="buy orange-white">Buy</button>
+                <button class="addtocart white-orange">Add to Cart</button>
+                <button class="buy white-orange">Buy</button>
             </div>    
             </div>
         </div>
@@ -194,20 +187,120 @@
         </div>
     </div>
 
-    <div class="bundle-banner">
+    <p class="bundletitle canela">Share the Love. Buy a Bundle.</p>
+    <div id="bundle-banner">
+        <div class="bundlebox1">
+                <div class="swiper optionSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="newpagebundle" src="../image/newpage-bundle.svg" alt="New Page bundle">
+                            <p class="swipercaption">A New Page</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="timeslowsbundle" src="../image/timeslows-bundle.svg" alt="Time Slows bundle">
+                            <p class="swipercaption">Where Time Slows</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="betweenbranchesbundle" src="../image/betweenbranches-bundle.svg" alt="Between Branches bundle">
+                            <p class="swipercaption">Between the Branches</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="softpetalsbundle" src="../image/softpetals-bundle.svg" alt="Soft Petals bundle">
+                            <p class="swipercaption">Bare Hands, Soft Petals</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="onedaybundle" src="../image/oneday-bundle.svg" alt="One Day bundle">
+                            <p class="swipercaption">For One More Day</p>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+        </div>
+        <div class="bundlebox2">
+                <div class="swiper optionSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="timeslows-handcream" src="../image/timeslows-handcream.svg" alt="Time Slows Handcream">
+                            <p class="swipercaption">Where Time Slows</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="oneday-handcream" src="../image/oneday-handcream.svg" alt="One Day Handcream">
+                            <p class="swipercaption">For One More Day</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="betweenbranches-handcream" src="../image/betweenbranches-handcream.svg" alt="Between Branches Handcream">
+                            <p class="swipercaption">Between the Branches</p>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+        </div>
+        <div class="bundlebox3">
+            <p class="bundleheader canela">Bestie Bundle</p>
+            <div class="bundleprice">
+                <p class="bundletext beforeprice"><s>$95.00</s></p>
+                <p class="bundletext afterprice">$75.00</p>
+            </div>
+            <p class="b undletext bodytext">Some things go better in a pair, just like our fragrances and hand cream!<br>Get it while stocks last. <br><br>This bundle includes:</p>
+            <ul>
+                <li>One 50ml Fragrance of your choice</li>
+                <li>One hand cream of your choice</li>
+            </ul>
+            <button class="bundlebutton orange-white">Add to Cart</button>
+        </div>
     </div>
 
     <div id="review-page">
+        <div class="swiper reviewSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide review">
+                    <img class="reviewfor anewpage" src="../image/packagingreview-1.png">
+                </div>
+                <div class="swiper-slide review">
+                    <img class="reviewfor onemoreday" src="../image/packagingreview-2.png">
+                </div>
+                <div class="swiper-slide">
+                    <img class="reviewfor wheretimeslows" src="../image/packagingreview-3.png">
+                </div>
+            </div>
+        </div>
+     
+        <div class="swiper-pagination"></div>
+        <div class="tabletop"></div>
     </div>
 
-    <div class="store-locator">
+    <div id="fullpage" class="store-locator">
+        <div class="section location-latemorning">
+            <div class="locationinfo">
+                <p class="locationheader canela">Late Morning Store</p>
+                <img class="latemorningimg" src="" alt="Photo of the Late Morning Store">
+                <p class="locationtext"><span>Official Stockist<br>230 South Bridge Rd, Singapore 058779</span>
+                    <br><br>Mondays: Closed<br>Tuesday-Sunday: 12-8 PM<br><br>
+                    "There’s a line in The Alchemist we often return to, “when you want something, all the universe conspires in helping you to achieve it."
+                    <br><br>We think about this often. When we first began creating perfumes, it wasn’t just about the scents themselves, but also about where they would belong, in a place that shares the same care, the same pace, the same appreciation for small details.</p>
+            </div>
+        </div>
+        <div class="section location-commonman"></div>
+        <div class="section location-fluidcollective"></div>
     </div>
 
     <footer>
     </footer>
+    <script>
+        const rating = document.querySelector('.sillagescale');
+        rating.getSymbol = () => '<sl-icon name="circle-fill"></sl-icon>';
+    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.37/dist/fullpage.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+        const rating = document.querySelector('.longevityscale');
+        rating.getSymbol = () => '<sl-icon name="circle-fill"></sl-icon>';
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js" integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
