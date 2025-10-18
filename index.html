@@ -10,22 +10,20 @@
     <!-- Reference Link: https://fonts.google.com/specimen/DM+Sans?query=DM+sans-->
     <script src="https://kit.fontawesome.com/f005ee47a5.js" crossorigin="anonymous"></script>
     <!-- Font Awesome Icons:
-     - Solid Circle
-     - Solid Star
+     - Bell
      -->
     <!-- Swiper JS CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <!-- Fullpage JS CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Shoelace UI CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
 
-    
     <link rel="stylesheet" href="styles.css">
     <title>frm.ytd - (Un)offical Website</title>
 </head>
 <body>
     <div class="start-page">
+    
+        
     </div>
 
     <div class="scent-options canela">
@@ -58,7 +56,7 @@
         </div>
     </div>
 
-    <div class="purchasingpage">
+    <div id="purchasingpage">
         <div class="purchasingbox glassmorphism">
             <div class="purchasingbox-left">
                 <div class="chartline">
@@ -85,11 +83,11 @@
             <div class="purchasingbox-right">
             <div class="rightrow1">
                 <p class="productname canela">[Fragrance Name]</p>
-                <p class="edp 24px-text">Eau de Parfum</p>
+                <p class="edp">Eau de Parfum</p>
             </div>
             <div class="rightrow2">
-                <p class="productprice 24px-text">$ [ ]</p>
-                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly value="4"></sl-rating>
+                <p class="productprice">$ [ ]</p>
+                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly></sl-rating>
                 <a href="#review-page" class="reviewnumber">(0.0)</a>
             </div>
             <p class="sizelabel"> Size</p>
@@ -100,29 +98,29 @@
 
             <div class="scentnotes">
                 <div class="noteone">
-                    <img src="" alt="image of fragrance note 1">
+                    <img class="noteoneimg" src="../image/placeholder.jpg" alt="image of fragrance note 1">
                     <p class="notename one">[Note]</p>
                     <p class="noteposition">Top Note</p>
                 </div>
 
                 <div class="notetwo">
-                    <img src="" alt="image of fragrance note 2">
+                    <img class="notetwoimg" src="" alt="image of fragrance note 2">
                     <p class="notename two">[Note]</p>
                 </div>
 
                 <div class="notethree">
-                    <img src="" alt="image of fragrance note 3">
+                    <img class="notethreeimg" src="" alt="image of fragrance note 3">
                     <p class="notename three">[Note]</p>
                     <p class="noteposition">Middle Note</p>
                 </div>
 
                 <div class="notefour">
-                    <img src="" alt="image of fragrance note 4">
+                    <img class="notefourimg" src="" alt="image of fragrance note 4">
                     <p class="notename four">[Note]</p>
                 </div>
 
                 <div class="notefive">
-                    <img src="" alt="image of fragrance note 5">
+                    <img class="notefiveimg" src="" alt="image of fragrance note 5">
                     <p class="notename five">[Note]</p>
                     <p class="noteposition">Base Note</p>
                 </div>
@@ -133,7 +131,7 @@
                     max="10" 
                     full-icon="circle-fill"
                     readonly value="3" 
-                    style="--symbol-color-active: #FFFFFF; --symbol-spacing:15px;"></sl-rating>
+                    style="--symbol-color-active: #FFFFFF; --symbol-spacing:10px;"></sl-rating>
             </div>
 
             <div class="sillage">
@@ -142,8 +140,7 @@
                 max="10"
                 readonly value="6" 
                 style="--symbol-color-active: #FFFFFF;
-                --symbol-spacing:15px;
-                --symbol-size: 1.25rem;
+                --symbol-spacing:10px;
                 "></sl-rating>
             </div>
             
@@ -272,34 +269,73 @@
     </div>
 
     <div id="fullpage" class="store-locator">
-        <div class="section location-latemorning">
-            <div class="locationinfo">
+        <div id="location-latemorning" class="section">
+            <div class="locationinfo glassmorphism">
                 <p class="locationheader canela">Late Morning Store</p>
-                <img class="latemorningimg" src="" alt="Photo of the Late Morning Store">
-                <p class="locationtext"><span>Official Stockist<br>230 South Bridge Rd, Singapore 058779</span>
+                <img class="latemorningimg" src="../image/latemorningimg.png" alt="Photo of the Late Morning Store">
+                <p class="locationtext"><span>Official Stockist<br><u>230 South Bridge Rd, Singapore 058779</u></span>
                     <br><br>Mondays: Closed<br>Tuesday-Sunday: 12-8 PM<br><br>
                     "There’s a line in The Alchemist we often return to, “when you want something, all the universe conspires in helping you to achieve it."
                     <br><br>We think about this often. When we first began creating perfumes, it wasn’t just about the scents themselves, but also about where they would belong, in a place that shares the same care, the same pace, the same appreciation for small details.</p>
             </div>
         </div>
-        <div class="section location-commonman"></div>
-        <div class="section location-fluidcollective"></div>
+        <div id="location-commonman" class="section">
+            <div class="locationinfo glassmorphism">
+                <p class="locationheader canela">Common Man Academy</p>
+                <img class="commonmanimg" src="../image/commonmanimg.png" alt="Photo of Common Man Academy">
+                <div class="info-row">
+                    <p><span>Pop Up Event<br><u>52 Chin Swee Rd, #03-71, Singapore 160052</u></span></p>
+                    <i id="bellbutton" class="fa-solid fa-bell"></i>
+                </div>
+                <p>8th August 2025<br>9AM-5PM</p>
+                <p>Our very first pop-up happened with our friends, @ofwonderwander, held at the cosy and welcoming Common Man Academy space. It felt almost surreal to see FRM.YTD step out from the quiet corners of our blending table into a space filled with people, conversations, and curious noses.
+                <br>Thank you, @ofwonderwander, for having us. And to everyone who came by, thank you for making our first one feel this warm.</p>
+            </div>
+        </div>
+        <div id="location-fluidcollective" class="section">
+            <div class="locationinfo glassmorphism">
+                <p class="locationheader canela">Fluid Collective</p>
+                <img class="fluidcollectiveimg" src="../image/fluidimg.png" alt="Photo of Fluid Collective Academy">
+                <div class="info-row">
+                    <p><span>Pop Up Event<br><u>24 Opal Crescent, Singapore 328418</u></span></p>
+                    <i id="bellbutton" class="fa-solid fa-bell"></i>
+                </div>
+                <p>20th September 2025<br>9AM-5PM<br><br>
+                Coffee and perfume both taught me that “notes” are not just descriptions.
+                They’re the building blocks of an experience. To taste or to smell in notes is to learn to notice, to connect, and to find meaning in the little shifts along the way.
+                <br>That’s what I wanted to bring to @fluidcollective.co on the 20th. A small space where both coffee and perfume sit side by side, and where every cup and every scent carries its own story, in every note.
+            </div>
+        </div>
     </div>
 
     <footer>
+        <img class="footerbottle" src="../image/onedaybottle.png" alt="For One More Day Bottle">
+        <div class="footerright">
+            <p class="footercaption canela">Small batches, personal stories</p>
+            <div class="footerinfo">
+                <div class="products">
+                    <p class="footerheader">PRODUCTS</p>
+                    <a href="#purchasingpage">Perfumes</a>
+                    <p>Handcreams</p>
+                    <p>Discovery Set</p>
+                </div>
+
+                <div class="about">
+                    <p class="footerheader">ABOUT</p>
+                    <p>Our Philosophy</p>
+                    <p>Lookbook</p>
+                    <p>Journal</p>
+                </div>
+                 <div class="location">
+                    <p class="footerheader">LOCATION</p>
+                    <a href="#location-latemorning">Late Morning Store</a>
+                    <a href="#location-commonman">Common Man Academy</a>
+                    <a href="#location-fluidcollective">Fluid Collective</a>
+                </div>
+            </div>
+        </div>
     </footer>
-    <script>
-        const rating = document.querySelector('.sillagescale');
-        rating.getSymbol = () => '<sl-icon name="circle-fill"></sl-icon>';
-    </script>
-
-    <script>
-        const rating = document.querySelector('.longevityscale');
-        rating.getSymbol = () => '<sl-icon name="circle-fill"></sl-icon>';
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js" integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
     <script src="main.js"></script>
 </body>
