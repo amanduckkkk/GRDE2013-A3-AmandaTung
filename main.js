@@ -4,6 +4,8 @@ let productName = document.querySelector('.productname');
 let productPrice = document.querySelector('.productprice');
 let starRating = document.querySelector('.star-ratings');
 let reviewNumber = document.querySelector('.reviewnumber');
+let longevityScale = document.querySelector('.longevityscale');
+let sillageScale = document.querySelector('.sillagescale');
 
 let noteOne = document.querySelector('.noteoneimg');
 let noteOneName = document.querySelector('.one');
@@ -26,12 +28,13 @@ let betweenBranchesButton = document.querySelector('.betweenbranches-chart');
 //A New Page -Fragrance Info
 let selectOptions = [newPageButton, oneDayButton, softPetalsButton, timeSlowsButton, betweenBranchesButton];
 
-const newPageInfo = ['A New Page', starRating.value = '4.5', '(4.5)',
+const newPageInfo = ['A New Page','4.5', '(4.5)',
     '../image/pearnote.png','Pear',
     '../image/bergamotnote.png', 'Bergamot',
     '../image/teanote.png', 'Green Tea',
     '../image/woodnote.png', 'Rosewood',
-    '../image/ambernote.png', 'Amber'
+    '../image/ambernote.png', 'Amber',
+    '8','4'
 ]
 
 newPageButton.addEventListener('click', ()=>{
@@ -41,12 +44,13 @@ newPageButton.addEventListener('click', ()=>{
 })
 
 //For One More Day -Fragrance Info
-const oneDayInfo = ['For One More Day', starRating.value = '5', '(5.0)',
+const oneDayInfo = ['For One More Day','5', '(5.0)',
     '../image/fignote.png','Fig',
     '../image/bergamotnote.png', 'Bergamot',
     '../image/woodnote.png', 'Cedarwood',
     '../image/sandalwoodnote.png', 'Sandalwood',
-    '../image/musknote.png', 'Musk'
+    '../image/musknote.png', 'Musk',
+    '5','3'
 ]
 
 oneDayButton.addEventListener('click', ()=>{
@@ -57,12 +61,13 @@ oneDayButton.addEventListener('click', ()=>{
 })
 
 //Bare Hands, Soft Petals -Fragrance Info
-const softPetalsInfo = ['Bare Hands, Soft Petals', starRating.value = '4', '(4.0)',
+const softPetalsInfo = ['Bare Hands, Soft Petals','4', '(4.0)',
     '../image/rosenote.png','Turkish Rose',
     '../image/applenote.png', 'Green Apple',
     '../image/jasminenote.png', 'Jasmine',
     '../image/woodnote.png', 'Cedarwood',
-    '../image/musknote.png', 'Musk'
+    '../image/musknote.png', 'Musk',
+    '4','2'
 ]
 
 softPetalsButton.addEventListener('click', ()=>{
@@ -73,12 +78,13 @@ softPetalsButton.addEventListener('click', ()=>{
 })
 
 //Where Time Slows -Fragrance Info
-const timeSlowsInfo = ['Where Time Slows',starRating.value = '4', '(4.0)',
+const timeSlowsInfo = ['Where Time Slows','4', '(4.0)',
     '../image/teanote.png','Green Tea',
     '../image/bergamotnote.png', 'Bergamot',
     '../image/jasminenote.png', 'Jasmine',
     '../image/ambernote.png', 'Amber',
-    '../image/woodnote.png', 'Cedarwood'
+    '../image/woodnote.png', 'Cedarwood',
+    '8','5'
 ]
 
 timeSlowsButton.addEventListener('click', ()=>{
@@ -89,12 +95,13 @@ timeSlowsButton.addEventListener('click', ()=>{
 })
 
 //Between the Branches -Fragrance Info
-const betweenBranchesInfo = ['Between the Branches', starRating.value = '4', '(4.0)',
+const betweenBranchesInfo = ['Between the Branches', '4.5', '(4.5)',
     '../image/woodnote.png','Cedarwood',
     '../image/sandalwoodnote.png', 'Sandalwood',
     '../image/spicenote.png', 'Soft Spices',
     '../image/ambernote.png', 'Amber',
-    '../image/musknote.png', 'Musk'
+    '../image/musknote.png', 'Musk',
+    '9','5'
 ]
 
 betweenBranchesButton.addEventListener('click', ()=>{
@@ -108,7 +115,7 @@ betweenBranchesButton.addEventListener('click', ()=>{
 // Changing product information 
 function changeInfo(productDisplay){
     productName.innerHTML = productDisplay[0];
-    starRating.innerHTML = productDisplay[1];
+    starRating.value = productDisplay[1];
     reviewNumber.innerHTML = productDisplay[2];
     noteOne.setAttribute('src',productDisplay[3]);
     noteOneName.innerHTML = productDisplay[4];
@@ -120,6 +127,8 @@ function changeInfo(productDisplay){
     noteFourName.innerHTML = productDisplay[10];
     noteFive.setAttribute('src',productDisplay[11]);
     noteFiveName.innerHTML = productDisplay[12];
+    longevityScale.value = productDisplay[13];
+    sillageScale.value = productDisplay[14];
 }
 
 let twentyMlPrice = '$ 45.00'
@@ -184,5 +193,60 @@ var swiper = new Swiper(".reviewSwiper", {
         el: ".swiper-pagination",
         clickable: true,
     }
+});
+
+//GSAP
+document.addEventListener("DOMContentLoaded", (event) => {
+  /* Jumping to section scroll animation
+  - https://codepen.io/GreenSock/pen/abdNRxX */
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  
+  const sections = document.querySelectorAll("section");
+  
+  const scrolling = {
+        enabled: true,
+        events: "scroll,wheel,touchmove,pointermove".split(","),
+        prevent: e => e.preventDefault(),
+        disable() {
+            if (scrolling.enabled) {
+                scrolling.enabled = false;
+                window.addEventListener("scroll", gsap.ticker.tick, {passive: true});
+                scrolling.events.forEach((e, i) => (i ? document : window).addEventListener(e, scrolling.prevent, {passive: false}));
+            }
+        },
+        enable() {
+            if (!scrolling.enabled) {
+                scrolling.enabled = true;
+                window.removeEventListener("scroll", gsap.ticker.tick);
+                scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent));
+            }
+        }
+    };
+
+
+    function goToSection(section, anim, i) {
+        if (scrolling.enabled) { // skip if a scroll tween is in progress
+            scrolling.disable();
+            gsap.to(window, {
+                scrollTo: {y: section, autoKill: false},
+                onComplete: scrolling.enable,
+                duration: 1
+            });
+            anim && anim.restart();
+        }
+    }
+
+    sections.forEach((section, i) => {
+        const intoAnim = gsap.from(section.querySelector(".locationinfo"), {yPercent: 50 ,duration: 1.25, paused: true});
+  
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top bottom-=1",
+            end: "bottom top+=1",
+            onEnter: () => goToSection(section, intoAnim),
+            onEnterBack: () => goToSection(section)
+        });
+    });
 });
 

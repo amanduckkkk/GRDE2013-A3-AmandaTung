@@ -280,6 +280,10 @@ body{
     color: #DA4637;
 }
 
+sl-rating::part(symbol) {
+  opacity: 0.5;
+}
+
 .reviewnumber{
     color:white;
 }
@@ -573,7 +577,7 @@ body{
 }
 
 /* STORE LOCATOR */
-.section{
+section{
 height: 125vh;
 }
 
@@ -595,7 +599,7 @@ span{
     
 }
 
-.section p, .section i{
+section p, section i{
     color: #FFF;
 }
 
