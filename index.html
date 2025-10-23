@@ -87,7 +87,7 @@
             </div>
             <div class="rightrow2">
                 <p class="productprice">$ 45.00</p>
-                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonl value="4.5"></sl-rating>
+                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly value="4.5"></sl-rating>
                 <a href="#review-page" class="reviewnumber">(4.5)</a>
             </div>
             <p class="sizelabel"> Size</p>
@@ -153,6 +153,30 @@
     </div>
 
     <div class="monthly-note">
+        <div class="motionpath-left">
+            <svg id="infoleft-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.57 82.9" style="overflow: visible;">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                            stroke: #fff;
+                            stroke-width: 5;
+                        }
+                    </style>
+                </defs>
+                <path id="motionpath-horizontal" class="cls-1" d="M133.57,2.49 H4.97"/>
+                <path id="motionpath-vertical" class="cls-1" d="M4.97,2.49 V77.92"/>
+                <path id="motionpath" d="M133.57,2.49 H4.97 V77.92" style="fill: none; stroke: none;"/>
+                <ellipse id="pathdot-left" class="cls-1" cx="133.57" cy="2.49" rx="7" ry="6.7" style="fill: #fff; stroke: none;" />
+            </svg>
+            <p id="info-left">The word bergamot derives from bergomotta in Italian and from Bergamum, a town in Italy.  </p>
+        </div>
+
+        <div class="motionpath-right">
+            
+            <p id="info-right">Bergamot is commercially grown in southern Calabria in southern Italy, where more than 80% of the essential oil is produced – by zesting the rind.</p>
+        </div>
+        
         <div class="bergamotinfo glassmorphism">
             <p class="bergamotheader canela">Bergamot</p>
             <p class="bergamotsubheader">Citrusy | Tart | Fruity | Bitter</p>
@@ -268,7 +292,7 @@
         <div class="tabletop"></div>
     </div>
 
-    <div class="store-locator">
+    <div id="" class="store-locator">
         <section id="location-latemorning">
             <div class="locationinfo glassmorphism">
                 <p class="locationheader canela">Late Morning Store</p>
@@ -340,6 +364,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

@@ -387,7 +387,54 @@ sl-rating::part(symbol) {
     display: flex;
     justify-content: end;
     align-items: center;
+    position: relative;
 }
+
+.motionpath-left {
+    position: absolute;
+    width: 200px; 
+    height: auto;
+    left: 170px; 
+    top: 375px;
+    z-index: 10;
+}
+
+#infoleft-path{
+    width: 100%;
+    height: auto;
+}
+
+#pathdot-left{
+    position: absolute;
+    left: 100px;
+    top: 105px;
+    width: 10%;
+    cursor: pointer;
+}
+
+#info-left{
+    text-align: center;
+    position: absolute;
+    left: -50px;
+    width: 60%;
+    display: none;
+}
+
+#inforight-path{
+    position: absolute;
+    width: 5%;
+    z-index: 999;
+}
+
+#info-right{
+    position: absolute;
+    text-align: center;
+    width:15%;
+    left: 385px;
+    bottom: 225px;
+    z-index: 999;
+}
+
 
 .bergamotinfo{
     height: auto;

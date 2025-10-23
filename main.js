@@ -197,11 +197,10 @@ var swiper = new Swiper(".reviewSwiper", {
 
 //GSAP
 document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
+  
   /* Jumping to section scroll animation
   - https://codepen.io/GreenSock/pen/abdNRxX */
-
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-  
   const sections = document.querySelectorAll("section");
   
   const scrolling = {
@@ -245,8 +244,83 @@ document.addEventListener("DOMContentLoaded", (event) => {
             start: "top bottom-=1",
             end: "bottom top+=1",
             onEnter: () => goToSection(section, intoAnim),
-            onEnterBack: () => goToSection(section)
+            onEnterBack: () => goToSection(section),
+            
         });
     });
+
+
+
+gsap.set("#infoleft-path", { opacity: 1 });
+gsap.set("#motionpath", { autoAlpha: 1 });
+gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
+
+
+const pathH = document.querySelector("#motionpath-horizontal");
+const pathV = document.querySelector("#motionpath-vertical");
+const pathHLength = pathH.getTotalLength();
+const pathVLength = pathV.getTotalLength();
+const totalPathLength = pathHLength + pathVLength;
+
+// Hide paths
+gsap.set("#motionpath-horizontal", {
+  strokeDasharray: pathHLength,
+  strokeDashoffset: pathHLength
+});
+gsap.set("#motionpath-vertical", {
+  strokeDasharray: pathVLength,
+  strokeDashoffset: pathVLength
+});
+
+
+const dotAnimation = gsap.timeline({ paused: true });
+
+// master tween controls total progress (eased)
+dotAnimation.to({ progress: 0 }, {
+  progress: 1,
+  duration: 2,
+  ease: "power2.inOut",
+  onUpdate: function () {
+    const p = this.targets()[0].progress;
+
+    
+    const hProgress = Math.min(p * totalPathLength / pathHLength, 1);
+    gsap.set("#motionpath-horizontal", {
+      strokeDashoffset: pathHLength * (1 - Math.min(hProgress, 1))
+    });
+
+    
+    if (p * totalPathLength > pathHLength) {
+      const vProgress = (p * totalPathLength - pathHLength) / pathVLength;
+      gsap.set("#motionpath-vertical", {
+        strokeDashoffset: pathVLength * (1 - Math.min(vProgress, 1))
+      });
+    }
+
+    
+    gsap.set("#pathdot-left", {
+      motionPath: {
+        path: "#motionpath",
+        align: "#motionpath",
+        alignOrigin: [0.5, 0.5],
+        autoRotate: false,
+        start: 0,
+        end: p
+      }
+    });
+  }
+});
+
+let infoLeft = document.querySelector('#info-left')
+
+
+document.querySelector("#pathdot-left").addEventListener("click", () => {
+  dotAnimation.restart();
+  setTimeout(() => {
+    infoLeft.style.display = 'flex';
+  },2000);
+});
+
+   
 });
 
