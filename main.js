@@ -250,8 +250,73 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
 
+    //Motion Path -Info Path Left
+    /*gsap.set("#infoleft-path", { opacity: 1 });
+    gsap.set("#motionpath", { autoAlpha: 1 });
+    gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
 
-gsap.set("#infoleft-path", { opacity: 1 });
+
+    const pathH = document.querySelector("#motionpath-horizontal");
+    const pathV = document.querySelector("#motionpath-vertical");
+    const pathHLength = pathH.getTotalLength();
+    const pathVLength = pathV.getTotalLength();
+    const totalPathLength = pathHLength + pathVLength;
+
+    gsap.set("#motionpath-horizontal", {
+        strokeDasharray: pathHLength,
+        strokeDashoffset: pathHLength
+    });
+    gsap.set("#motionpath-vertical", {
+        strokeDasharray: pathVLength,
+        strokeDashoffset: pathVLength
+    });
+
+
+    const dotAnimationLeft = gsap.timeline({ paused: true });
+
+
+    dotAnimationLeft.to({ progress: 0 }, {
+        progress: 1,
+        duration: 2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+            const p = this.targets()[0].progress;
+
+            const hProgress = Math.min(p * totalPathLength / pathHLength, 1);
+            gsap.set("#motionpath-horizontal", {
+                strokeDashoffset: pathHLength * (1 - Math.min(hProgress, 1))
+            });
+
+    
+            if (p * totalPathLength > pathHLength) {
+                const vProgress = (p * totalPathLength - pathHLength) / pathVLength;
+                gsap.set("#motionpath-vertical", {
+                    strokeDashoffset: pathVLength * (1 - Math.min(vProgress, 1))
+                });
+            }
+
+    
+            gsap.set("#pathdot-left", {
+                motionPath: {
+                    path: "#motionpath",
+                    align: "#motionpath",
+                    alignOrigin: [0.5, 0.5],
+                    autoRotate: false,
+                    start: 0,
+                    end: p
+                }   
+            });
+        }
+    });
+
+    let infoLeft = document.querySelector('#info-left')
+    document.querySelector("#pathdot-left").addEventListener("click", () => {
+        dotAnimationLeft.restart();
+        setTimeout(() => {
+            infoLeft.style.display = 'flex';
+        },2000);
+    });*/
+    gsap.set("#infoleft-path", { opacity: 1 });
 gsap.set("#motionpath", { autoAlpha: 1 });
 gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
 
@@ -321,6 +386,51 @@ document.querySelector("#pathdot-left").addEventListener("click", () => {
   },2000);
 });
 
-   
+   //Motion Path -Info Path Right
+    gsap.set("#inforight-path", { opacity: 1 });
+gsap.set("#motionpath-right", { autoAlpha: 1 });
+gsap.set("#pathdot-right", { transformOrigin: "50% 50%" });
+
+const pathRight = document.querySelector("#motionpath-right");
+const pathRightLength = pathRight.getTotalLength();
+
+gsap.set("#motionpath-right", {
+    strokeDasharray: pathRightLength,
+    strokeDashoffset: pathRightLength
+});
+
+const dotAnimationRight = gsap.timeline({ paused: true });
+
+dotAnimationRight.to({ progress: 0 }, {
+    progress: 1,
+    duration: 2,
+    ease: "power2.inOut",
+    onUpdate: function () {
+        const p = this.targets()[0].progress;
+        
+        gsap.set("#motionpath-right", {
+            strokeDashoffset: pathRightLength * (1 - p)
+        });
+        
+        gsap.set("#pathdot-right", {
+            motionPath: {
+                path: "#motionpath-right",
+                align: "#motionpath-right",
+                alignOrigin: [0.5, 0.5],
+                autoRotate: false,
+                start: 0,
+                end: p
+            }   
+        });
+    }
+});
+
+let infoRight = document.querySelector('#info-right');
+document.querySelector("#pathdot-right").addEventListener("click", () => {
+    dotAnimationRight.restart();
+    setTimeout(() => {
+        infoRight.style.display = 'flex';
+    }, 2000);
+});
 });
 

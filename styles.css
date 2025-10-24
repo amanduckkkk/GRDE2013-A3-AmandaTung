@@ -404,12 +404,10 @@ sl-rating::part(symbol) {
     height: auto;
 }
 
-#pathdot-left{
-    position: absolute;
-    left: 100px;
-    top: 105px;
-    width: 10%;
+#pathdot-left, #pathdot-right{
     cursor: pointer;
+    transform: (1);
+    transform-origin: center;
 }
 
 #info-left{
@@ -422,17 +420,23 @@ sl-rating::part(symbol) {
 
 #inforight-path{
     position: absolute;
-    width: 5%;
-    z-index: 999;
+    width: auto;
+    height: 300px;
+    left: 500px;
+    top: 380px;
 }
 
 #info-right{
     position: absolute;
     text-align: center;
     width:15%;
-    left: 385px;
-    bottom: 225px;
+    left: 415px;
+    bottom: 170px;
     z-index: 999;
+    display: none;
+}
+#pathdot-right{
+    cursor: pointer;
 }
 
 
