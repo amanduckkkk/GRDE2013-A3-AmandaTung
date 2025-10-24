@@ -14,50 +14,63 @@
      -->
     <!-- Swiper JS CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <!-- Shoelace UI CDN-->
+    <!-- Shoelace UI CDN
+     - Ratings
+     - Tooltips
+     - Drawer
+     -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.11/dist/lenis.css">
 
     <link rel="stylesheet" href="styles.css">
     <title>frm.ytd - (Un)offical Website</title>
 </head>
 <body>
-    <div class="start-page">
-    
-        
+    <div id="start-page">
+        <div class="start-mid">
+            <img id='headerbottle' src="../image/headerbottle.svg" alt="Header Bottle for Zoom in ">
+            <div class="herotext canela">
+                <p>From Yesterday</p>
+                <p>Worn Today</p>
+            </div>
+        </div> 
     </div>
 
-    <div class="scent-options canela">
-        <div class="scentoption-one space-around">
+    <div id="lenis">
+        <div class="scent-options canela">
+            <div class="scentoption-one space-around">
             <p class="lineone">Crisp Green Pear</p>
             <img class="pear" src="../image/pear.png" alt="Pear">
             <p class="linetwo">and Bergamot</p>
-        </div>
+            </div>
 
-        <div class="scentoption-two">
+            <div class="scentoption-two">
             <p>Gentle Fresh Blooms and Soft Petals</p>
             <img class="rose" src="../image/rose.png" alt="Rose">
-        </div>
+            </div>
 
-        <div class="scentoption-three space-around">
+            <div class="scentoption-three space-around">
             <p>Fresh Cedarwood</p>
             <img class="wood" src="../image/wood.png" alt="Wood">
             <p>a Touch of Spice</p>
-        </div>
+            </div>
 
-        <div class="scentoption-four space-around">
+            <div class="scentoption-four space-around">
             <p>Sun-ripened</p>
             <img class="fig" src="../image/fig.png" alt="Fig">
             <p>Figs and Bright Bergamot</p>
-        </div>
+            </div>
 
-        <div class="scentoption-five">
+            <div class="scentoption-five">
             <img class="amber" src="../image/amber.png" alt="Amber">
             <p>Soft Ambrette. Light and Airy</p>
+            </div>
         </div>
-    </div>
 
-    <div id="purchasingpage">
-        <div class="purchasingbox glassmorphism">
+        <div id="purchasingpage">
+            <sl-drawer label="Your cart" class="cart-overview">
+            </sl-drawer>
+            <div class="purchasingbox glassmorphism">
             <div class="purchasingbox-left">
                 <div class="chartline">
                     <div class="x-axis">
@@ -126,16 +139,21 @@
                 </div>
             </div>
             <div class="longevity">
-                <p class="longevity-text">Longevity</p>
-                    <sl-rating class="longevityscale"
+                <sl-tooltip content="How long the scent lasts" placement="left">
+                    <u class="longevity-text">Longevity</u>
+                </sl-tooltip>
+                <sl-rating class="longevityscale"
                     max="10" 
                     full-icon="circle-fill"
                     readonly value="3" 
-                    style="--symbol-color-active: #FFFFFF; --symbol-spacing:10px;"></sl-rating>
+                    style="--symbol-color-active: #FFFFFF; --symbol-spacing:10px;">
+                </sl-rating>
             </div>
 
             <div class="sillage">
-                <p class="sillage-text">Sillage</p>
+                <sl-tooltip content="Fragrance's scent trail" placement="left">
+                    <u class="sillage-text">Sillage</u>
+                </sl-tooltip>
                 <sl-rating class="sillagescale" 
                 max="10"
                 readonly value="6" 
@@ -149,11 +167,11 @@
                 <button class="buy white-orange">Buy</button>
             </div>    
             </div>
+            </div>
         </div>
-    </div>
 
-    <div class="monthly-note">
-        <div class="motionpath-left">
+        <div class="monthly-note">
+            <div class="motionpath-left">
             <svg id="infoleft-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.57 82.9" style="overflow: visible;">
                 <defs>
                     <style>
@@ -170,9 +188,9 @@
                 <ellipse id="pathdot-left" cx="133.57" cy="2.49" rx="6.5" ry="6.5" fill="#fff" stroke="none" />
             </svg>
             <p id="info-left">The word bergamot derives from bergomotta in Italian and from Bergamum, a town in Italy.  </p>
-        </div>
+            </div>
 
-        <div class="motionpath-right">
+            <div class="motionpath-right">
            <svg id="inforight-path" xmlns="http://www.w3.org/2000/svg" viewBox="-15 0 35 215" style="overflow: visible;">
                 <defs>
                     <style>
@@ -188,9 +206,9 @@
                 <ellipse id="pathdot-right" cx="2.5" cy="2.5" rx="6.5" ry="6.5" fill="#fff" stroke="none" />
             </svg>
             <p id="info-right">Bergamot is commercially grown in southern Calabria in southern Italy, where more than 80% of the essential oil is produced – by zesting the rind.</p>
-        </div>
+            </div>
         
-        <div class="bergamotinfo glassmorphism">
+            <div class="bergamotinfo glassmorphism">
             <p class="bergamotheader canela">Bergamot</p>
             <p class="bergamotsubheader">Citrusy | Tart | Fruity | Bitter</p>
             <p class="bergamotbody">Bergamot orange is the fragrant citrus fruit of the Citrus bergamia, 
@@ -218,12 +236,12 @@
                 <p class="noteinfo fragrancename">Where Time Slows</p>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
 
-    <p class="bundletitle canela">Share the Love. Buy a Bundle.</p>
-    <div id="bundle-banner">
-        <div class="bundlebox1">
+        <p class="bundletitle canela">Share the Love. Buy a Bundle.</p>
+        <div id="bundle-banner">
+            <div class="bundlebox1">
                 <div class="swiper optionSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -250,8 +268,8 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-        </div>
-        <div class="bundlebox2">
+            </div>
+            <div class="bundlebox2">
                 <div class="swiper optionSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -270,8 +288,8 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-        </div>
-        <div class="bundlebox3">
+            </div>
+            <div class="bundlebox3">
             <p class="bundleheader canela">Bestie Bundle</p>
             <div class="bundleprice">
                 <p class="bundletext beforeprice"><s>$95.00</s></p>
@@ -283,10 +301,10 @@
                 <li>One hand cream of your choice</li>
             </ul>
             <button class="bundlebutton orange-white">Add to Cart</button>
+            </div>
         </div>
-    </div>
 
-    <div id="review-page">
+        <div id="review-page">
         <div class="swiper reviewSwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide review">
@@ -303,8 +321,9 @@
      
         <div class="swiper-pagination"></div>
         <div class="tabletop"></div>
-    </div>
 
+        </div>
+    </div>
     <div id="" class="store-locator">
         <section id="location-latemorning">
             <div class="locationinfo glassmorphism">
@@ -343,8 +362,10 @@
                 <br>That’s what I wanted to bring to @fluidcollective.co on the 20th. A small space where both coffee and perfume sit side by side, and where every cup and every scent carries its own story, in every note.
             </div>
         </section>
+            </div>
+        </div>
     </div>
-
+    </div>       
     <footer>
         <img class="footerbottle" src="../image/onedaybottle.png" alt="For One More Day Bottle">
         <div class="footerright">
@@ -378,6 +399,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <!-- Lenis, Smooth Scroller-->
+     <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script> 
     <script src="main.js"></script>
 </body>
 </html>

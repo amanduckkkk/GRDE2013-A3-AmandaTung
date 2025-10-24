@@ -1,5 +1,4 @@
 
-
 *{
     box-sizing: border-box;
 }
@@ -22,9 +21,36 @@ body{
     font-family: "Canela Condensed", sans-serif;
 }
 
-.start-page{
-    height:100vh;
+#start-page{
     background-image: url(../image/gradientbackground.svg);
+    height: 100vh;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    overflow:hidden;
+    color: #FFF;
+}
+
+.start-mid{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    align-items: center;
+}
+
+#headerbottle{
+    position: absolute;
+    bottom: -300px;
+    width: 50%;
+}
+
+.herotext{
+    position: absolute;
+    top: 250px;
+    font-size: 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 500px;
 }
 
 
@@ -141,9 +167,11 @@ body{
     padding: 20px;
 }
 
-#purchasingpage p{
+#purchasingpage p, #purchasingpage u{
     color: white;
 }
+
+
 
 .productname{
     font-size: 55px;

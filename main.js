@@ -1,4 +1,6 @@
 console.log("JavaScript is working!")
+
+
 //Fragrance Selection 
 let productName = document.querySelector('.productname');
 let productPrice = document.querySelector('.productprice');
@@ -195,9 +197,52 @@ var swiper = new Swiper(".reviewSwiper", {
     }
 });
 
+//Lenis -Smooth Scroller
+const lenis = new Lenis({
+  smooth: true,
+  duration: 1.2,
+  lerp: 0.1,
+  smoothTouch: true,
+  autoRaf: true,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+const scentOptions = document.querySelector(".scent-options");
+const bundleBanner = document.querySelector("#bundle-banner");
+
+document.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const start = scentOptions.offsetTop;
+  const end = bundleBanner.offsetTop + bundleBanner.offsetHeight;
+
+  if (scrollY >= start && scrollY <= end) {
+    lenis.enable();
+  } else {
+    lenis.disable();
+  }
+});
+
 //GSAP
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
+
+  /*Starting Page Scroll Animation
+    - https://www.youtube.com/watch?v=jETj55LE_i8 */
+  const {innerHeight} = window;
+    gsap.from('#headerbottle',{
+        scale:0.5, stagger:0.25, duration: 3,
+        scrollTrigger: {
+            trigger: '#start-page',
+            pin: true, 
+            end: `+=${innerHeight * 1.3}`,
+            scrub: 3
+        }
+    })
   
   /* Jumping to section scroll animation
   - https://codepen.io/GreenSock/pen/abdNRxX */
@@ -250,72 +295,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
 
-    //Motion Path -Info Path Left
-    /*gsap.set("#infoleft-path", { opacity: 1 });
-    gsap.set("#motionpath", { autoAlpha: 1 });
-    gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
-
-
-    const pathH = document.querySelector("#motionpath-horizontal");
-    const pathV = document.querySelector("#motionpath-vertical");
-    const pathHLength = pathH.getTotalLength();
-    const pathVLength = pathV.getTotalLength();
-    const totalPathLength = pathHLength + pathVLength;
-
-    gsap.set("#motionpath-horizontal", {
-        strokeDasharray: pathHLength,
-        strokeDashoffset: pathHLength
-    });
-    gsap.set("#motionpath-vertical", {
-        strokeDasharray: pathVLength,
-        strokeDashoffset: pathVLength
-    });
-
-
-    const dotAnimationLeft = gsap.timeline({ paused: true });
-
-
-    dotAnimationLeft.to({ progress: 0 }, {
-        progress: 1,
-        duration: 2,
-        ease: "power2.inOut",
-        onUpdate: function () {
-            const p = this.targets()[0].progress;
-
-            const hProgress = Math.min(p * totalPathLength / pathHLength, 1);
-            gsap.set("#motionpath-horizontal", {
-                strokeDashoffset: pathHLength * (1 - Math.min(hProgress, 1))
-            });
-
-    
-            if (p * totalPathLength > pathHLength) {
-                const vProgress = (p * totalPathLength - pathHLength) / pathVLength;
-                gsap.set("#motionpath-vertical", {
-                    strokeDashoffset: pathVLength * (1 - Math.min(vProgress, 1))
-                });
-            }
-
-    
-            gsap.set("#pathdot-left", {
-                motionPath: {
-                    path: "#motionpath",
-                    align: "#motionpath",
-                    alignOrigin: [0.5, 0.5],
-                    autoRotate: false,
-                    start: 0,
-                    end: p
-                }   
-            });
-        }
-    });
-
-    let infoLeft = document.querySelector('#info-left')
-    document.querySelector("#pathdot-left").addEventListener("click", () => {
-        dotAnimationLeft.restart();
-        setTimeout(() => {
-            infoLeft.style.display = 'flex';
-        },2000);
-    });*/
+    //Motion Left
     gsap.set("#infoleft-path", { opacity: 1 });
 gsap.set("#motionpath", { autoAlpha: 1 });
 gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
@@ -434,3 +414,10 @@ document.querySelector("#pathdot-right").addEventListener("click", () => {
 });
 });
 
+//Shoelace Drawer
+const drawer = document.querySelector('.cart-overview');
+const openButton = document.querySelector('.buy');
+const closeButton = drawer.querySelector('sl-button[variant="primary"]');
+
+openButton.addEventListener('click', () => drawer.show());
+closeButton.addEventListener('click', () => drawer.hide());
