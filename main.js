@@ -198,7 +198,7 @@ var swiper = new Swiper(".reviewSwiper", {
 });
 
 //Lenis -Smooth Scroller
-const lenis = new Lenis({
+/*const lenis = new Lenis({
   smooth: true,
   duration: 1.2,
   lerp: 0.1,
@@ -225,7 +225,7 @@ document.addEventListener("scroll", () => {
   } else {
     lenis.disable();
   }
-});
+}); */
 
 //GSAP
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -243,6 +243,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
             scrub: 3
         }
     })
+
+    // Fixed Position Mask -Monthly Note
+    ScrollTrigger.create({
+        trigger: ".bergamotheader",
+        start: "top center",     // starts showing mid-entry
+        end: "bottom top",    // hides as section scrolls out
+        onEnter: () => toggleMotionPaths(true),
+        onEnterBack: () => toggleMotionPaths(true),
+        onLeave: () => toggleMotionPaths(false),
+        onLeaveBack: () => toggleMotionPaths(false),
+    });
+
+    function toggleMotionPaths(show) {
+        const els = gsap.utils.toArray([".motionpath-left",
+            ".motionpath-right","#info-left","#info-right"]);
+
+        gsap.to(els, {
+            opacity: show ? 1 : 0,
+            duration: 0.5,
+            ease: "ease-in-out",
+            overwrite: "auto"
+        });
+    }
   
   /* Jumping to section scroll animation
   - https://codepen.io/GreenSock/pen/abdNRxX */

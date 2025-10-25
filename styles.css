@@ -2,6 +2,10 @@
 *{
     box-sizing: border-box;
 }
+
+html{
+    scroll-behavior: smooth;
+}
 /* Canela Condensed Light Font */
 @font-face{
     font-family: "Canela Condensed";
@@ -24,9 +28,6 @@ body{
 #start-page{
     background-image: url(../image/gradientbackground.svg);
     height: 100vh;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
     overflow:hidden;
     color: #FFF;
 }
@@ -40,8 +41,8 @@ body{
 
 #headerbottle{
     position: absolute;
-    bottom: -300px;
-    width: 50%;
+    bottom: -275px;
+    width: 45%;
 }
 
 .herotext{
@@ -51,6 +52,63 @@ body{
     display: flex;
     flex-direction: row;
     gap: 500px;
+}
+
+.hero-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    border-radius: 20px;
+    gap: 30px;
+    padding: 15px 30px;
+    margin: 40px 0px 0px 40px;
+}
+
+.hero-menu p, .hero-menu a{
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#start-page i{
+    font-size:30px
+}
+
+.right-icons{
+    display: flex;
+    margin: 40px 40px 0px 0px;
+    gap: 15px;
+}
+
+.user-container, .bag-container{
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.spacebetween-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+.callback-icon p{
+    font-size: 28px;
+    text-align: center;
+}
+
+.callback-icon{
+    width: 15%;
+    border-radius:0px 0px 20px 20px;
+    top: 0px;
+    transform: translateX(-30%);
+    text-align: center;
 }
 
 
@@ -405,12 +463,14 @@ sl-rating::part(symbol) {
 
 /* MONTHLY NOTE -------------------------------------------------- */
 .monthly-note{
-    height:120vh;
+    height:145vh;
     background-image: url(image/bergamot.jpg);
     color:#FFF;
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
+    background-attachment: fixed;
+    overflow: hidden;
 
     display: flex;
     justify-content: end;
@@ -419,13 +479,14 @@ sl-rating::part(symbol) {
 }
 
 .motionpath-left {
-    position: absolute;
+    position: fixed;
     width: 200px; 
     height: auto;
     left: 170px; 
     top: 375px;
     z-index: 10;
 }
+
 
 #infoleft-path{
     width: 100%;
@@ -440,32 +501,35 @@ sl-rating::part(symbol) {
 
 #info-left{
     text-align: center;
-    position: absolute;
+    position:absolute;
     left: -50px;
     width: 60%;
     display: none;
 }
 
 #inforight-path{
-    position: absolute;
+    position: fixed;
     width: auto;
     height: 300px;
     left: 500px;
-    top: 380px;
+    top: 250px;
 }
 
 #info-right{
-    position: absolute;
+    position: fixed;
     text-align: center;
     width:15%;
     left: 415px;
-    bottom: 170px;
+    bottom: 125px;
     z-index: 999;
     display: none;
+    transition: 0.5s ease;
 }
+
 #pathdot-right{
     cursor: pointer;
 }
+
 
 
 .bergamotinfo{
@@ -479,6 +543,7 @@ sl-rating::part(symbol) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 
 }
 .bergamotheader{
@@ -520,15 +585,19 @@ sl-rating::part(symbol) {
 }
 /* BUNDLE TITLE */
 .bundletitle{
-
     margin:0px;
+    position:absolute;
     font-size: 128px;
+    top: -100px;
+    color: #FFF;
 }
+
 
 /* BUNDLE ------------------------------------------------------- */
 #bundle-banner{
+    position: relative;
     background-color: white;
-    height: 100vh;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -621,8 +690,11 @@ sl-rating::part(symbol) {
     position: relative;
     background-image: url(../image/reviewbackground.png);
     background-position: center;
+    background-attachment: fixed;
+    display: flex;
     z-index: -2;
     padding-top: 80px;
+    
 }
 
 .reviewSwiper .swiper-slide img {
@@ -640,7 +712,7 @@ sl-rating::part(symbol) {
 }
 
 .swiper-pagination{
-    top: 600px !important;
+    bottom: 80px !important;
     position: absolute;
     width: 100%;
     text-align: center;
@@ -649,7 +721,7 @@ sl-rating::part(symbol) {
 .tabletop{
     position: absolute;
     width: 100vw;
-    height:300px;
+    height:200px;
     background: linear-gradient(180deg,rgba(71, 35, 10, 1) 0%, rgba(51, 23, 4, 1) 100%);
     bottom:0px;
     z-index:-1;
