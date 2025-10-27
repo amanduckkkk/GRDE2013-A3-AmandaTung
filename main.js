@@ -1,4 +1,3 @@
-
 //Fragrance Selection 
 let productName = document.querySelector('.productname');
 let productPrice = document.querySelector('.productprice');
@@ -482,10 +481,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 //Shoelace Drawer
 const drawer = document.querySelector('.cart-overview');
-const openButton = document.querySelector('.buy');
+let buyButton =document.querySelector('.buy');
+let shoppingBag =document.querySelector('.fa-bag-shopping');
+const openButtons = [buyButton, shoppingBag];
+function openFunction(){
+    drawer.show()
+}
 const closeButton = drawer.querySelector('sl-button[variant="primary"]');
 
-openButton.addEventListener('click', () => drawer.show());
+openButtons.forEach(button => {
+  if (button) {
+    button.addEventListener("click", openFunction);
+  }
+});
 closeButton.addEventListener('click', () => drawer.hide());
 
 //Alert Trigger 

@@ -106,8 +106,8 @@ body{
 .callback-icon{
     width: 15%;
     border-radius:0px 0px 20px 20px;
-    top: 0px;
-    transform: translateX(-30%);
+    margin-top: -30px;
+    margin-left: -130px;
     text-align: center;
 }
 
@@ -215,6 +215,15 @@ body{
 }
 
 /* PURCHASING PAGE */
+
+sl-drawer img{ 
+    width: 100%;
+}
+
+sl-drawer{
+    font-size:30px;
+}
+
 #purchasingpage{
     display: flex;
     justify-content: center;
@@ -382,10 +391,6 @@ body{
     color: #DA4637;
 }
 
-sl-rating::part(symbol) {
-  opacity: 0.5;
-}
-
 .reviewnumber{
     color:white;
 }
@@ -511,7 +516,6 @@ sl-rating::part(symbol) {
 
 #pathdot-left, #pathdot-right{
     cursor: pointer;
-    transform: (1);
     transform-origin: center;
 }
 
@@ -766,7 +770,7 @@ span{
     
 }
 
-section p, section i{
+section h2, section p, section i{
     color: #FFF;
 }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- DM Sans (Google Fonts)-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/f005ee47a5.js" crossorigin="anonymous"></script>
     <!-- Font Awesome Icons:
      - Bell
+     - Fill Circle
      -->
     <!-- Swiper JS CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
@@ -20,10 +21,9 @@
      - Drawer
      -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.11/dist/lenis.css">
-
     <link rel="stylesheet" href="styles.css">
     <title>frm.ytd - (Un)offical Website</title>
+    <link rel="icon" type="image/png" href="../image/oneday-bundle.svg">
 </head>
 <body>
     <div id="start-page">
@@ -91,6 +91,8 @@
 
         <div id="purchasingpage">
             <sl-drawer label="Your cart" class="cart-overview">
+                <img src="../image/sorrytommy.jpg" alt="i'm sorry">
+                i can't do this anymore... i'm sorry tommy...
             </sl-drawer>
             <div class="purchasingbox glassmorphism">
             <div class="purchasingbox-left">
@@ -185,7 +187,7 @@
             </div>
             
             <div class="purchasebuttons">
-                <button class="addtocart white-orange">Add to Cart</button>
+                <button class="addtocart white-orange" onclick="alertTrigger()">Add to Cart</button>
                 <button class="buy white-orange">Buy</button>
             </div>    
             </div>
@@ -312,7 +314,7 @@
                 <li>One 50ml Fragrance of your choice</li>
                 <li>One hand cream of your choice</li>
             </ul>
-            <button class="bundlebutton orange-white">Add to Cart</button>
+            <button class="bundlebutton orange-white" onclick="alertTrigger()">Add to Cart</button>
             </div>
         </div>
 
@@ -320,13 +322,13 @@
         <div class="swiper reviewSwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide review">
-                    <img class="reviewfor anewpage" src="../image/packagingreview-1.png">
+                    <img class="reviewfor anewpage" src="../image/packagingreview-1.png" alt="review #1">
                 </div>
                 <div class="swiper-slide review">
-                    <img class="reviewfor onemoreday" src="../image/packagingreview-2.png">
+                    <img class="reviewfor onemoreday" src="../image/packagingreview-2.png" alt="review #2">
                 </div>
                 <div class="swiper-slide">
-                    <img class="reviewfor wheretimeslows" src="../image/packagingreview-3.png">
+                    <img class="reviewfor wheretimeslows" src="../image/packagingreview-3.png" alt="review #3">
                 </div>
             </div>
         </div>
@@ -336,10 +338,10 @@
 
         </div>
     </div>
-    <div id="" class="store-locator">
+    <div class="store-locator">
         <section id="location-latemorning">
             <div class="locationinfo glassmorphism">
-                <p class="locationheader canela">Late Morning Store</p>
+                <h2 class="locationheader canela">Late Morning Store</h2>
                 <img class="latemorningimg" src="../image/latemorningimg.png" alt="Photo of the Late Morning Store">
                 <p class="locationtext"><span>Official Stockist<br><u>230 South Bridge Rd, Singapore 058779</u></span>
                     <br><br>Mondays: Closed<br>Tuesday-Sunday: 12-8 PM<br><br>
@@ -349,11 +351,11 @@
         </section>
         <section id="location-commonman" class="section">
             <div class="locationinfo glassmorphism">
-                <p class="locationheader canela">Common Man Academy</p>
+                <h2 class="locationheader canela">Common Man Academy</h2>
                 <img class="commonmanimg" src="../image/commonmanimg.png" alt="Photo of Common Man Academy">
                 <div class="info-row">
                     <p><span>Pop Up Event<br><u>52 Chin Swee Rd, #03-71, Singapore 160052</u></span></p>
-                    <i id="bellbutton" class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-bell"></i>
                 </div>
                 <p>8th August 2025<br>9AM-5PM</p>
                 <p>Our very first pop-up happened with our friends, @ofwonderwander, held at the cosy and welcoming Common Man Academy space. It felt almost surreal to see FRM.YTD step out from the quiet corners of our blending table into a space filled with people, conversations, and curious noses.
@@ -362,11 +364,11 @@
         </section>
         <section id="location-fluidcollective">
             <div class="locationinfo glassmorphism">
-                <p class="locationheader canela">Fluid Collective</p>
+                <h2 class="locationheader canela">Fluid Collective</h2>
                 <img class="fluidcollectiveimg" src="../image/fluidimg.png" alt="Photo of Fluid Collective Academy">
                 <div class="info-row">
                     <p><span>Pop Up Event<br><u>24 Opal Crescent, Singapore 328418</u></span></p>
-                    <i id="bellbutton" class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-bell"></i>
                 </div>
                 <p>20th September 2025<br>9AM-5PM<br><br>
                 Coffee and perfume both taught me that “notes” are not just descriptions.
@@ -374,10 +376,7 @@
                 <br>That’s what I wanted to bring to @fluidcollective.co on the 20th. A small space where both coffee and perfume sit side by side, and where every cup and every scent carries its own story, in every note.
             </div>
         </section>
-            </div>
-        </div>
-    </div>
-    </div>       
+    </div>     
     <footer>
         <img class="footerbottle" src="../image/onedaybottle.png" alt="For One More Day Bottle">
         <div class="footerright">
