@@ -175,7 +175,7 @@ body{
 }
 
 .scentoption-four{
-    gap: 515px;
+    gap: 512px;
 }
 
 .scentoption-four p{
@@ -196,6 +196,24 @@ body{
     bottom:-250px;
     left: -75px;
 }
+
+#scent-options-explosion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.explosion-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 /* PURCHASING PAGE */
 #purchasingpage{
     display: flex;
@@ -228,8 +246,6 @@ body{
 #purchasingpage p, #purchasingpage u{
     color: white;
 }
-
-
 
 .productname{
     font-size: 55px;
@@ -851,8 +867,3 @@ footer a, footer p{
     flex-direction: row;
     gap: 20px;
 }
-
-
-
-
-

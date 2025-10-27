@@ -1,5 +1,3 @@
-console.log("JavaScript is working!")
-
 
 //Fragrance Selection 
 let productName = document.querySelector('.productname');
@@ -197,42 +195,12 @@ var swiper = new Swiper(".reviewSwiper", {
     }
 });
 
-//Lenis -Smooth Scroller
-/*const lenis = new Lenis({
-  smooth: true,
-  duration: 1.2,
-  lerp: 0.1,
-  smoothTouch: true,
-  autoRaf: true,
-});
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-const scentOptions = document.querySelector(".scent-options");
-const bundleBanner = document.querySelector("#bundle-banner");
-
-document.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const start = scentOptions.offsetTop;
-  const end = bundleBanner.offsetTop + bundleBanner.offsetHeight;
-
-  if (scrollY >= start && scrollY <= end) {
-    lenis.enable();
-  } else {
-    lenis.disable();
-  }
-}); */
 
 //GSAP
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
 
-  /*Starting Page Scroll Animation
-    - https://www.youtube.com/watch?v=jETj55LE_i8 */
+  //Starting Page Scroll Animation
   const {innerHeight} = window;
     gsap.from('#headerbottle',{
         scale:0.5, stagger:0.25, duration: 3,
@@ -243,6 +211,94 @@ document.addEventListener("DOMContentLoaded", (event) => {
             scrub: 3
         }
     })
+
+      //Click for Confetti
+    if (!document.getElementById("scent-options-explosion")) {
+        const explosionContainer = document.createElement("div");
+        explosionContainer.id = "scent-options-explosion";
+        document.body.appendChild(explosionContainer);
+    }
+    const explosionContainer = document.getElementById("scent-options-explosion");
+
+    const dotQuantity = 35;
+    const dotSizeMax = 18;
+    const dotSizeMin = 6;
+
+    // Colour themes for each scent
+    const scentColors = {
+        pear: ["#d4ff9a", "#84c400", "#a8e063", "#c7ea46"],
+        rose: ["#ffc0cb", "#ff3366", "#ff6b9d", "#ff1493"],
+        wood: ["#d2b48c", "#8b5a2b", "#cd853f", "#a0826d"],
+        fig: ["#caa0ff", "#8752b0", "#9d7cbf", "#b19cd9"],
+        amber: ["#ffd580", "#ff9900", "#ffb347", "#ffa500"]
+    };
+
+    function createExplosion(clickX, clickY, colors) {
+        for (let i = 0; i < dotQuantity; i++) {
+            const dot = document.createElement("div");
+            dot.className = "explosion-dot";
+
+            const color = gsap.utils.random(colors);
+            dot.style.background = `radial-gradient(circle, ${color}, ${color}dd)`;
+            dot.style.boxShadow = `0 0 10px ${color}88`;
+
+            const size = gsap.utils.random(dotSizeMin, dotSizeMax, 1);
+            explosionContainer.appendChild(dot);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = gsap.utils.random(200, 400);
+            const duration = gsap.utils.random(0.8, 1.8);
+            const gravity = 500;
+
+            const vx = Math.cos(angle) * velocity;
+            const vy = Math.sin(angle) * velocity;
+
+            gsap.set(dot, {
+                x: clickX,
+                y: clickY,
+                width: size,
+                height: size,
+                opacity: 1,
+                xPercent: -50,
+                yPercent: -50
+            });
+
+            gsap.to(dot, {
+                x: clickX + vx,
+                y: clickY + vy + gravity * duration * duration * 0.001,
+                rotation: gsap.utils.random(-360, 360),
+                opacity: 0,
+                duration: duration,
+                ease: "power2.out",
+                onComplete: () => dot.remove()
+            });
+        }
+    }
+
+    const scentImages = {'.pear': 'pear','.rose': 'rose','.wood': 'wood','.fig': 'fig','.amber': 'amber'};
+
+    Object.entries(scentImages).forEach(([selector, scentKey]) => {
+        const img = document.querySelector(selector);
+        if (img) {
+            img.style.cursor = 'pointer';
+            img.style.transition = 'transform 0.2s ease, filter 0.2s ease';
+            img.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.05, filter: 'brightness(1.1)', duration: 0.3 });
+            });
+
+            img.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, filter: 'brightness(1)', duration: 0.3 });
+            });
+
+            img.addEventListener("click", (e) => {
+                const rect = img.getBoundingClientRect();
+                const clickX = rect.left + rect.width / 2;
+                const clickY = rect.top + rect.height / 2;
+                gsap.to(img, { scale: 0.95, duration: 0.1, yoyo: true, repeat: 1 });
+                createExplosion(clickX, clickY, scentColors[scentKey]);
+            });
+        }
+    });
 
     // Fixed Position Mask -Monthly Note
     ScrollTrigger.create({
@@ -267,8 +323,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
   
-  /* Jumping to section scroll animation
-  - https://codepen.io/GreenSock/pen/abdNRxX */
+  // Jump to section animation
   const sections = document.querySelectorAll("section");
   
   const scrolling = {
@@ -293,7 +348,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
     function goToSection(section, anim, i) {
-        if (scrolling.enabled) { // skip if a scroll tween is in progress
+        if (scrolling.enabled) {
             scrolling.disable();
             gsap.to(window, {
                 scrollTo: {y: section, autoKill: false},
@@ -318,123 +373,111 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
 
-    //Motion Left
+    //Motion Path- Info Left
     gsap.set("#infoleft-path", { opacity: 1 });
-gsap.set("#motionpath", { autoAlpha: 1 });
-gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
+    gsap.set("#motionpath", { autoAlpha: 1 });
+    gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
 
 
-const pathH = document.querySelector("#motionpath-horizontal");
-const pathV = document.querySelector("#motionpath-vertical");
-const pathHLength = pathH.getTotalLength();
-const pathVLength = pathV.getTotalLength();
-const totalPathLength = pathHLength + pathVLength;
+    const pathH = document.querySelector("#motionpath-horizontal");
+    const pathV = document.querySelector("#motionpath-vertical");
+    const pathHLength = pathH.getTotalLength();
+    const pathVLength = pathV.getTotalLength();
+    const totalPathLength = pathHLength + pathVLength;
 
-// Hide paths
-gsap.set("#motionpath-horizontal", {
-  strokeDasharray: pathHLength,
-  strokeDashoffset: pathHLength
-});
-gsap.set("#motionpath-vertical", {
-  strokeDasharray: pathVLength,
-  strokeDashoffset: pathVLength
-});
-
-
-const dotAnimation = gsap.timeline({ paused: true });
-
-// master tween controls total progress (eased)
-dotAnimation.to({ progress: 0 }, {
-  progress: 1,
-  duration: 2,
-  ease: "power2.inOut",
-  onUpdate: function () {
-    const p = this.targets()[0].progress;
-
-    
-    const hProgress = Math.min(p * totalPathLength / pathHLength, 1);
     gsap.set("#motionpath-horizontal", {
-      strokeDashoffset: pathHLength * (1 - Math.min(hProgress, 1))
+        strokeDasharray: pathHLength,
+        strokeDashoffset: pathHLength
+    });
+    gsap.set("#motionpath-vertical", {
+        strokeDasharray: pathVLength,
+        strokeDashoffset: pathVLength
     });
 
-    
-    if (p * totalPathLength > pathHLength) {
-      const vProgress = (p * totalPathLength - pathHLength) / pathVLength;
-      gsap.set("#motionpath-vertical", {
-        strokeDashoffset: pathVLength * (1 - Math.min(vProgress, 1))
-      });
-    }
 
-    
-    gsap.set("#pathdot-left", {
-      motionPath: {
-        path: "#motionpath",
-        align: "#motionpath",
-        alignOrigin: [0.5, 0.5],
-        autoRotate: false,
-        start: 0,
-        end: p
-      }
+    const dotAnimation = gsap.timeline({ paused: true });
+
+    dotAnimation.to({ progress: 0 }, {
+        progress: 1,
+        duration: 2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+            const p = this.targets()[0].progress;
+            const hProgress = Math.min(p * totalPathLength / pathHLength, 1);
+            gsap.set("#motionpath-horizontal", {
+                strokeDashoffset: pathHLength * (1 - Math.min(hProgress, 1))
+            });
+            if (p * totalPathLength > pathHLength) {
+                const vProgress = (p * totalPathLength - pathHLength) / pathVLength;
+                gsap.set("#motionpath-vertical", {
+                    strokeDashoffset: pathVLength * (1 - Math.min(vProgress, 1))
+                });
+            }
+            gsap.set("#pathdot-left", {
+                motionPath: {
+                    path: "#motionpath",
+                    align: "#motionpath",
+                    alignOrigin: [0.5, 0.5],
+                    autoRotate: false,
+                    start: 0,
+                    end: p
+                }
+            });
+        }
     });
-  }
-});
 
-let infoLeft = document.querySelector('#info-left')
+    let infoLeft = document.querySelector('#info-left')
+    document.querySelector("#pathdot-left").addEventListener("click", () => {
+        dotAnimation.restart();
+        setTimeout(() => {
+            infoLeft.style.display = 'flex';
+        },2000);
+    });
 
-
-document.querySelector("#pathdot-left").addEventListener("click", () => {
-  dotAnimation.restart();
-  setTimeout(() => {
-    infoLeft.style.display = 'flex';
-  },2000);
-});
-
-   //Motion Path -Info Path Right
+   //Motion Path- Info Right
     gsap.set("#inforight-path", { opacity: 1 });
-gsap.set("#motionpath-right", { autoAlpha: 1 });
-gsap.set("#pathdot-right", { transformOrigin: "50% 50%" });
+    gsap.set("#motionpath-right", { autoAlpha: 1 });
+    gsap.set("#pathdot-right", { transformOrigin: "50% 50%" });
 
-const pathRight = document.querySelector("#motionpath-right");
-const pathRightLength = pathRight.getTotalLength();
+    const pathRight = document.querySelector("#motionpath-right");
+    const pathRightLength = pathRight.getTotalLength();
 
-gsap.set("#motionpath-right", {
-    strokeDasharray: pathRightLength,
-    strokeDashoffset: pathRightLength
-});
+    gsap.set("#motionpath-right", {
+        strokeDasharray: pathRightLength,
+        strokeDashoffset: pathRightLength
+    });
 
-const dotAnimationRight = gsap.timeline({ paused: true });
+    const dotAnimationRight = gsap.timeline({ paused: true });
 
-dotAnimationRight.to({ progress: 0 }, {
-    progress: 1,
-    duration: 2,
-    ease: "power2.inOut",
-    onUpdate: function () {
-        const p = this.targets()[0].progress;
-        
-        gsap.set("#motionpath-right", {
-            strokeDashoffset: pathRightLength * (1 - p)
-        });
-        
-        gsap.set("#pathdot-right", {
-            motionPath: {
-                path: "#motionpath-right",
-                align: "#motionpath-right",
-                alignOrigin: [0.5, 0.5],
-                autoRotate: false,
-                start: 0,
-                end: p
-            }   
-        });
-    }
-});
+    dotAnimationRight.to({ progress: 0 }, {
+        progress: 1,
+        duration: 2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+            const p = this.targets()[0].progress;
+            gsap.set("#motionpath-right", {
+                strokeDashoffset: pathRightLength * (1 - p)
+            }); 
+            gsap.set("#pathdot-right", {
+                motionPath: {
+                    path: "#motionpath-right",
+                    align: "#motionpath-right",
+                    alignOrigin: [0.5, 0.5],
+                    autoRotate: false,
+                    start: 0,
+                    end: p
+                }       
+             });
+        }
+    });
 
-let infoRight = document.querySelector('#info-right');
-document.querySelector("#pathdot-right").addEventListener("click", () => {
-    dotAnimationRight.restart();
-    setTimeout(() => {
-        infoRight.style.display = 'flex';
-    }, 2000);
-});
+    let infoRight = document.querySelector('#info-right');
+    document.querySelector("#pathdot-right").addEventListener("click", () => {
+        dotAnimationRight.restart();
+        setTimeout(() => {
+            infoRight.style.display = 'flex';
+        }, 2000);
+    });
 });
 
 //Shoelace Drawer
@@ -444,3 +487,8 @@ const closeButton = drawer.querySelector('sl-button[variant="primary"]');
 
 openButton.addEventListener('click', () => drawer.show());
 closeButton.addEventListener('click', () => drawer.hide());
+
+//Alert Trigger 
+function alertTrigger(){
+	alert('Added to cart!');
+}
