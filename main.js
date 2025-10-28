@@ -34,13 +34,13 @@ const newPageInfo = ['A New Page','4.5', '(4.5)',
     '../image/woodnote.png', 'Rosewood',
     '../image/ambernote.png', 'Amber',
     '8','4'
-]
+];
 
 newPageButton.addEventListener('click', ()=>{
     changeInfo(newPageInfo);
     selectOptions[0].classList.add('selected');
     [1, 2, 3, 4].forEach(i => selectOptions[i].classList.remove('selected'));
-})
+});
 
 //For One More Day -Fragrance Info
 const oneDayInfo = ['For One More Day','5', '(5.0)',
@@ -50,14 +50,14 @@ const oneDayInfo = ['For One More Day','5', '(5.0)',
     '../image/sandalwoodnote.png', 'Sandalwood',
     '../image/musknote.png', 'Musk',
     '5','3'
-]
+];
 
 oneDayButton.addEventListener('click', ()=>{
     changeInfo(oneDayInfo);
     selectOptions[1].classList.add('selected');
     [0, 2, 3, 4].forEach(i => selectOptions[i].classList.remove('selected'));
     
-})
+});
 
 //Bare Hands, Soft Petals -Fragrance Info
 const softPetalsInfo = ['Bare Hands, Soft Petals','4', '(4.0)',
@@ -66,15 +66,14 @@ const softPetalsInfo = ['Bare Hands, Soft Petals','4', '(4.0)',
     '../image/jasminenote.png', 'Jasmine',
     '../image/woodnote.png', 'Cedarwood',
     '../image/musknote.png', 'Musk',
-    '4','2'
-]
+    '4','2'];
 
 softPetalsButton.addEventListener('click', ()=>{
     changeInfo(softPetalsInfo);
     selectOptions[2].classList.add('selected');
     [0, 1, 3, 4].forEach(i => selectOptions[i].classList.remove('selected'));
     
-})
+});
 
 //Where Time Slows -Fragrance Info
 const timeSlowsInfo = ['Where Time Slows','4', '(4.0)',
@@ -84,14 +83,14 @@ const timeSlowsInfo = ['Where Time Slows','4', '(4.0)',
     '../image/ambernote.png', 'Amber',
     '../image/woodnote.png', 'Cedarwood',
     '8','5'
-]
+];
 
 timeSlowsButton.addEventListener('click', ()=>{
     changeInfo(timeSlowsInfo);
     selectOptions[3].classList.add('selected');
     [0, 1, 2, 4].forEach(i => selectOptions[i].classList.remove('selected'));
     
-})
+});
 
 //Between the Branches -Fragrance Info
 const betweenBranchesInfo = ['Between the Branches', '4.5', '(4.5)',
@@ -101,13 +100,13 @@ const betweenBranchesInfo = ['Between the Branches', '4.5', '(4.5)',
     '../image/ambernote.png', 'Amber',
     '../image/musknote.png', 'Musk',
     '9','5'
-]
+];
 
 betweenBranchesButton.addEventListener('click', ()=>{
     changeInfo(betweenBranchesInfo);
     selectOptions[4].classList.add('selected');
     [0, 1, 2, 3].forEach(i => selectOptions[i].classList.remove('selected'));
-})
+});
 
 
 
@@ -130,11 +129,11 @@ function changeInfo(productDisplay){
     sillageScale.value = productDisplay[14];
 }
 
-let twentyMlPrice = '$ 45.00'
-let fiftyMlPrice = '$ 70.00'
+let twentyMlPrice = '$ 45.00';
+let fiftyMlPrice = '$ 70.00';
 
 function changePrice(priceDisplay){
-    productPrice.innerHTML = priceDisplay
+    productPrice.innerHTML = priceDisplay;
 }
 
 let twentyMlButton = document.querySelector('.twentyml');
@@ -143,10 +142,10 @@ twentyMlButton.addEventListener('click', ()=>{
     twentyMlButton.style.backgroundColor = '#DA4637';
     twentyMlButton.style.color = '#FFFFFF';
     twentyMlButton.style.border = '#952216, solid, 2px';
-    fiftyMlButton.style.color = '#403831'
-    fiftyMlButton.style.backgroundColor = '#FFFFFF'
+    fiftyMlButton.style.color = '#403831';
+    fiftyMlButton.style.backgroundColor = '#FFFFFF';
     fiftyMlButton.style.border = 'none';
-})
+});
 
 let fiftyMlButton = document.querySelector('.fiftyml');
 fiftyMlButton.addEventListener('click', ()=>{
@@ -157,7 +156,7 @@ fiftyMlButton.addEventListener('click', ()=>{
     twentyMlButton.style.color = '#403831';
     twentyMlButton.style.backgroundColor = '#FFFFFF';
     twentyMlButton.style.border = 'none';
-})
+});
 
 //Changing icon to circle on Shoelace
 document.querySelector('.sillagescale').getSymbol = () => '<sl-icon name="circle-fill"></sl-icon>';
@@ -209,7 +208,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             end: `+=${innerHeight * 1.3}`,
             scrub: 3
         }
-    })
+    });
 
       //Click for Confetti
     if (!document.getElementById("scent-options-explosion")) {
@@ -289,7 +288,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 gsap.to(img, { scale: 1, filter: 'brightness(1)', duration: 0.3 });
             });
 
-            img.addEventListener("click", (e) => {
+            img.addEventListener("click", () => {
                 const rect = img.getBoundingClientRect();
                 const clickX = rect.left + rect.width / 2;
                 const clickY = rect.top + rect.height / 2;
@@ -300,6 +299,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     // Fixed Position Mask -Monthly Note
+    gsap.set(["#pathdot-left", "#pathdot-right"], { opacity: 0 });
     ScrollTrigger.create({
         trigger: ".bergamotheader",
         start: "top center",     // starts showing mid-entry
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     function toggleMotionPaths(show) {
         const els = gsap.utils.toArray([".motionpath-left",
-            ".motionpath-right","#info-left","#info-right"]);
+            ".motionpath-right","#info-left","#info-right", "#pathdot-left", "#pathdot-right" ]);
 
         gsap.to(els, {
             opacity: show ? 1 : 0,
@@ -324,7 +324,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
   
   // Jump to section animation
   const sections = document.querySelectorAll("section");
-  
   const scrolling = {
         enabled: true,
         events: "scroll,wheel,touchmove,pointermove".split(","),
@@ -346,7 +345,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     };
 
 
-    function goToSection(section, anim, i) {
+    function goToSection(section, anim,i) {
         if (scrolling.enabled) {
             scrolling.disable();
             gsap.to(window, {
@@ -360,7 +359,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     sections.forEach((section, i) => {
         const intoAnim = gsap.from(section.querySelector(".locationinfo"), {yPercent: 50 ,duration: 1.25, paused: true});
-  
         ScrollTrigger.create({
             trigger: section,
             start: "top bottom-=1",
@@ -376,8 +374,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.set("#infoleft-path", { opacity: 1 });
     gsap.set("#motionpath", { autoAlpha: 1 });
     gsap.set("#pathdot-left", { transformOrigin: "50% 50%" });
-
-
     const pathH = document.querySelector("#motionpath-horizontal");
     const pathV = document.querySelector("#motionpath-vertical");
     const pathHLength = pathH.getTotalLength();
@@ -395,7 +391,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
     const dotAnimation = gsap.timeline({ paused: true });
-
     dotAnimation.to({ progress: 0 }, {
         progress: 1,
         duration: 2,
@@ -425,13 +420,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
-    let infoLeft = document.querySelector('#info-left')
+    let infoLeft = document.querySelector('#info-left');
+    gsap.set(infoLeft, { opacity: 0, y: 20, display: 'none' });
     document.querySelector("#pathdot-left").addEventListener("click", () => {
         dotAnimation.restart();
-        setTimeout(() => {
-            infoLeft.style.display = 'flex';
-        },2000);
+        gsap.delayedCall(2, () => {
+            gsap.set(infoLeft, { display: 'flex' });
+            gsap.to(infoLeft, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power2.inOut"
+            });
+        });
     });
+
 
    //Motion Path- Info Right
     gsap.set("#inforight-path", { opacity: 1 });
@@ -471,11 +474,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     let infoRight = document.querySelector('#info-right');
+    gsap.set(infoRight, { opacity: 0, y: 20, display: 'none' });
+
     document.querySelector("#pathdot-right").addEventListener("click", () => {
-        dotAnimationRight.restart();
-        setTimeout(() => {
-            infoRight.style.display = 'flex';
-        }, 2000);
+      dotAnimationRight.restart();
+        gsap.delayedCall(2, () => {
+            gsap.set(infoRight, { display: 'block' });
+            gsap.to(infoRight, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power2.inOut"
+            });
+        });
     });
 });
 
@@ -485,7 +496,7 @@ let buyButton =document.querySelector('.buy');
 let shoppingBag =document.querySelector('.fa-bag-shopping');
 const openButtons = [buyButton, shoppingBag];
 function openFunction(){
-    drawer.show()
+    drawer.show();
 }
 const closeButton = drawer.querySelector('sl-button[variant="primary"]');
 

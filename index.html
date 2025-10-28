@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- DM Sans (Google Fonts)-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,14 @@
      - Drawer
      -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <!-- Bootstrap for CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>frm.ytd - (Un)offical Website</title>
     <link rel="icon" type="image/png" href="../image/oneday-bundle.svg">
 </head>
 <body>
     <div id="start-page">
-            
         <div class="spacebetween-menu">
             <div class="hero-menu glassmorphism">
                 <p>ABOUT</p>
@@ -58,43 +59,42 @@
         </div> 
     </div>
 
-    <div id="lenis">
-        <div id="scent-options" class="scent-options canela">
-            <div class="scentoption-one space-around">
+    <div id="scent-options" class="scent-options canela">
+        <div class="scentoption-one space-around">
             <p class="lineone">Crisp Green Pear</p>
             <img class="pear" src="../image/pear.png" alt="Pear">
             <p class="linetwo">and Bergamot</p>
-            </div>
+        </div>
 
-            <div class="scentoption-two">
+        <div class="scentoption-two">
             <p>Gentle Fresh Blooms and Soft Petals</p>
             <img class="rose" src="../image/rose.png" alt="Rose">
-            </div>
+        </div>
 
-            <div class="scentoption-three space-around">
+        <div class="scentoption-three space-around">
             <p>Fresh Cedarwood</p>
             <img class="wood" src="../image/wood.png" alt="Wood">
             <p>a Touch of Spice</p>
-            </div>
+        </div>
 
-            <div class="scentoption-four space-around">
+        <div class="scentoption-four space-around">
             <p>Sun-ripened</p>
             <img class="fig" src="../image/fig.png" alt="Fig">
             <p>Figs and Bright Bergamot</p>
-            </div>
-
-            <div class="scentoption-five">
-            <img class="amber" src="../image/amber.png" alt="Amber">
-            <p>Soft Ambrette. Light and Airy</p>
-            </div>
         </div>
 
-        <div id="purchasingpage">
-            <sl-drawer label="Your cart" class="cart-overview">
-                <img src="../image/sorrytommy.jpg" alt="i'm sorry">
-                i can't do this anymore... i'm sorry tommy...
-            </sl-drawer>
-            <div class="purchasingbox glassmorphism">
+        <div class="scentoption-five">
+            <img class="amber" src="../image/amber.png" alt="Amber">
+            <p>Soft Ambrette. Light and Airy</p>
+        </div>
+    </div>
+
+    <div id="purchasingpage">
+        <sl-drawer label="Your cart" class="cart-overview">
+            <img src="../image/sorrytommy.jpg" alt="i'm sorry">
+            i can't do this anymore... i'm sorry tommy...
+        </sl-drawer>
+        <div class="purchasingbox glassmorphism">
             <div class="purchasingbox-left">
                 <div class="chartline">
                     <div class="x-axis">
@@ -118,49 +118,50 @@
                 </div>
             </div>
             <div class="purchasingbox-right">
-            <div class="rightrow1">
-                <p class="productname canela">New Page</p>
-                <p class="edp">Eau de Parfum</p>
-            </div>
-            <div class="rightrow2">
-                <p class="productprice">$ 45.00</p>
-                <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly value="4.5"></sl-rating>
-                <a href="#review-page" class="reviewnumber">(4.5)</a>
-            </div>
-            <p class="sizelabel"> Size</p>
-            <div class="sizebuttons">
-                <button class="twentyml white-orange">20ml</button>
-                <button class="fiftyml white-orange">50ml</button>
-            </div>
-
-            <div class="scentnotes">
-                <div class="noteone">
-                    <img class="noteoneimg" src="../image/pearnote.png" alt="image of fragrance note 1">
-                    <p class="notename one">Pear</p>
-                    <p class="noteposition">Top Note</p>
+                <div class="rightrow1">
+                    <p class="productname canela">New Page</p>
+                    <p class="edp">Eau de Parfum</p>
+                </div>
+            
+                <div class="rightrow2">
+                    <p class="productprice">$ 45.00</p>
+                    <sl-rating class="star-ratings" style="--symbol-color-active:#DA4637; --symbol-spacing: 5px;" readonly value="4.5"></sl-rating>
+                    <a href="#review-page" class="reviewnumber">(4.5)</a>
+                </div>
+                <p class="sizelabel"> Size</p>
+                <div class="sizebuttons">
+                    <button class="twentyml white-orange">20ml</button>
+                    <button class="fiftyml white-orange">50ml</button>
                 </div>
 
-                <div class="notetwo">
-                    <img class="notetwoimg" src="../image/bergamotnote.png" alt="image of fragrance note 2">
-                    <p class="notename two">Bergamot</p>
-                </div>
+                <div class="scentnotes">
+                    <div class="noteone">
+                        <img class="noteoneimg" src="../image/pearnote.png" alt="image of fragrance note 1">
+                        <p class="notename one">Pear</p>
+                        <p class="noteposition">Top Note</p>
+                    </div>
 
-                <div class="notethree">
-                    <img class="notethreeimg" src="../image/teanote.png" alt="image of fragrance note 3">
-                    <p class="notename three">Green Tea</p>
-                    <p class="noteposition">Middle Note</p>
-                </div>
+                    <div class="notetwo">
+                        <img class="notetwoimg" src="../image/bergamotnote.png" alt="image of fragrance note 2">
+                        <p class="notename two">Bergamot</p>
+                    </div>
 
-                <div class="notefour">
-                    <img class="notefourimg" src="../image/woodnote.png" alt="image of fragrance note 4">
-                    <p class="notename four">Rosewood</p>
-                </div>
+                    <div class="notethree">
+                        <img class="notethreeimg" src="../image/teanote.png" alt="image of fragrance note 3">
+                        <p class="notename three">Green Tea</p>
+                        <p class="noteposition">Middle Note</p>
+                    </div>
 
-                <div class="notefive">
-                    <img class="notefiveimg" src="../image/ambernote.png" alt="image of fragrance note 5">
-                    <p class="notename five">Amber</p>
-                    <p class="noteposition">Base Note</p>
-                </div>
+                    <div class="notefour">
+                        <img class="notefourimg" src="../image/woodnote.png" alt="image of fragrance note 4">
+                        <p class="notename four">Rosewood</p>
+                    </div>
+
+                    <div class="notefive">
+                        <img class="notefiveimg" src="../image/ambernote.png" alt="image of fragrance note 5">
+                        <p class="notename five">Amber</p>
+                        <p class="noteposition">Base Note</p>
+                    </div>
             </div>
             <div class="longevity">
                 <sl-tooltip content="How long the scent lasts" placement="left">
@@ -190,11 +191,11 @@
                 <button class="addtocart white-orange" onclick="alertTrigger()">Add to Cart</button>
                 <button class="buy white-orange">Buy</button>
             </div>    
-            </div>
-            </div>
+        </div>
+    </div>
         </div>
 
-        <div class="monthly-note">
+    <div class="monthly-note">
                 <div class="motionpath-left">
                     <svg id="infoleft-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.57 82.9" style="overflow: visible;">
                         <defs>
@@ -336,7 +337,6 @@
         <div class="swiper-pagination"></div>
         <div class="tabletop"></div>
 
-        </div>
     </div>
     <div class="store-locator">
         <section id="location-latemorning">
